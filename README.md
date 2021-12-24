@@ -19,6 +19,8 @@ Below are the various files in the repository:
 
 **ETL_Pipeline_Preparation.ipynb**: This is a jupyter notebook version of the ETL pipeline preparation program. The first 7 sections present the program in a procedural form while the 8th section presents the program in a modularized form using a class with 3 methods inside. Its dependency files include messages.csv and categories.csv. These are the datasets processed by the program and output as a SQLite database file called disasterMessage.db.
 
+**ML_Pipeline_Preparation.ipynb**: This is another jupyter notebook. It contains the program of the machine learning workflow of this work. It loads the disaster messages, tokenizes them, trains the machine learning model and gives outputs as categories of disaster that match the received messages.
+
 **process_data.py**: This is a python version of the ETL_Pipeline_Preparation.ipynb. It was produced with the Udacity workspace IDE. It contains only the modularized version of the ETL pipeline preparation program and an independent main function that runs the class. Its dependencies are disaster_messages.csv and disaster_categories.csv. These are the datasets processed by the program and output as a SQLite database file called disast.db. The file disaster_messages.csv is exactly the same as messages.csv (mentioned above); disaster_categories.csv is the same as categories.csv while disast.db is the same as disasterMessage.db.
 
 **messages.csv/disaster_messages.csv**: This is a dataset file in csv format which contains the various messages that signify disaster situation.
