@@ -9,9 +9,14 @@ The python modules used in this work include:<br>
 . pandas <br>
 . sqlite3 <br>
 . sqlalchemy <br>
+. sklearn <br>
 
 **Files In the Repository**<br>
-Below are the various files in the repository:
+Below are the various folders and files in the repository:
+
+**app folder**: This folder contains all the files used to develop the data dashboard. These files include
+
+**models folder**: This folder contains all the files used to develop the data and machine learning models of this work. Some of these files are in jupyter notebook while others are the exact replica in pure python format, developed with the Udacity workspace IDE. The jupyter files include ETL_Pipeline_Preparation.ipynb and ML_Pipeline_Preparation.ipynb while the workspace files include process_data.py and run.py.
 
 
 **README.md**: This very write-up.
