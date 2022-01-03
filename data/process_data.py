@@ -7,9 +7,9 @@ import sqlite3
 from sqlalchemy import create_engine
 
 # Dataset and database file paths
-dismsg = 'data/disaster_messages.csv'
-discate = 'data/disaster_categories.csv'
-dis = 'sqlite:///data/disast.db'
+disaster_messages = 'data/disaster_messages.csv'
+disaster_categories = 'data/disaster_categories.csv'
+DisasterResponse = 'sqlite:///data/DisasterResponse.db'
 
 class ETLPipline:
     '''
@@ -109,16 +109,16 @@ class ETLPipline:
         engine = create_engine(self.database_filepath)
         return dframe.to_sql('dtable', engine, index=False)
     
-etl = ETLPipline(dismsg, discate, dis) # Instance of the class
+etl = ETLPipline(disaster_messages, disaster_categories, DisasterResponse) # Instance of the class
 
 
 def main():
         if len(sys.argv) == 4:
 
-            msg, cate, disas = sys.argv[1:]
+            disaster_messages, disaster_categories, DisasterResponse = sys.argv[1:]
 
             print('Loading data...\n    MESSAGES: {}\n    CATEGORIES: {}'
-                  .format(msg, cate))
+                  .format(disaster_messages, disaster_categories))
             df = etl.load_data()
 
             print('Cleaning data...')
