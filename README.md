@@ -15,6 +15,9 @@ The python modules used in this work include:<br>
 . pickle <br>
 . numpy <br>
 . sklearn <br>
+. json <br>
+. plotly <br>
+. flask <br>
 
 **Files and Folders In the Repository**<br>
 Below are the various folders and files in the repository:
@@ -27,31 +30,34 @@ Below are the various folders and files in the repository:
 
 **-process_data.py**: This is a python file where the 2 datasets anove were processed. Here, an ETL pipeline was executed on the datasets - the 2 datasets were merged; the 36 different categories were used to create columns and the number of times each of them featured for each message were entered in their rows; an unwanted column of the merged dataset, called 'original', was dropped and the final clean dataset was saved as a SQLite database file, called DisasterResponse.db.
 
-**-DisasterResponse.db**:
+**-DisasterResponse.db**: This is the cleaned dataset which would be used to build the model of this work. It contains the messages, the message genres, the disaster categories and again, 36 columns, each of which is a disaster category. These 36 columns serve as categorical columns for the original 36 different disaster categories.
 
+**models folder**: This folder contains the files used to develop the machine learning models of this work. They include train_classifier.py and classifier.pkl.zip.
 
-**app folder**: This folder contains all the files used to develop the data dashboard. It primarily contains a python file called run.py and a sub-folder called templates. The templates sub-folder contains two html files namely master.html and go.html.<br>
-**-run.py**: 
+**-train_classifier.py**: This file performs 2 basic tasks - preparing the messages to be suitable for machine learning application and using the prepared messages to predict the possible category of disaster it represents. To achieve this, it tokenizes and lemmatizes the messages using the Natural Language Toolkit module. It builds the model, applying grid search. The trained model then predicts the disaster category. The sklearn's machine learning algorithms played vital roles here. In order to possibly make predictions from multiple columns (36 columns) the MultiOutputClassifier class of the sklearn was applied. Furthermore, it saves the model as a pickle file for subsequent use.
 
- 
+**-classifier.pkl.zip**: This is the pickle file of the trained model arising from the train_classifier.py file. It is in zip format to compress it enough to the level that Github would accept it.
 
-**models folder**: This folder contains all the files used to develop the data and machine learning models of this work. Some of these files are in jupyter notebook while others are the exact replica in pure python format, developed with the Udacity workspace IDE. The jupyter files include ETL_Pipeline_Preparation.ipynb and ML_Pipeline_Preparation.ipynb while the workspace files include process_data.py and run.py.
+**app folder**: This folder contains all the files used to develop the data dashboard. It primarily contains a python file called run.py and a sub-folder called templates. The templates sub-folder contains two html files namely, master.html and go.html.
 
+**-run.py**: This file contains the python codes that make the data at the backend too be available at the frontend. It uses the flask module to communicate with the html files at the frontend, while it uses the plotly module to plot graph. The graph in this case is a bar chart showing the 3 genres in the dataset and the number of times each of them featured.
 
-**README.md**: This very write-up.
+**-master.html**: This is the home page of the visualization dashboard. It provides a text field for a message to be entered and a classification button to be clicked for the system to categorize the message. Below this field is the initial visualization which is a bar chart of the 3 genres with their individual number of features.
 
+**-go.html**: When a message is entered on the message field on the dashboard homepage and the classification button is clicked, the 36 disaster categories enlist below, taking over the position of the prior bar chart. The categories that are predicted to align with the entered message are shaded with light green colour, while the ones that are not predicted remain unshaded. This effects come from the go.html file. It inherits the attributes of the master.html file and then replaces the bar chart with the list of the dasaster categories.
 
-**ETL_Pipeline_Preparation.ipynb**: This is a jupyter notebook version of the ETL pipeline preparation program. The first 7 sections present the program in a procedural form while the 8th section presents the program in a modularized form using a class with 3 methods inside. Its dependency files include messages.csv and categories.csv. These are the datasets processed by the program and output as a SQLite database file called disasterMessage.db.
+**Summary**<br>
+The above arrangement of the files follows the procedure followed in actualizing this project. The work flowed from ETL pipeline preparation, through machine learning pipeline preparation to data visualization. This work successfully manipulates human texts and uses them to make predictions. However, more work can still be done on the project, especially on the visualization area but due to time constraint, it is left at this level for now. Contributions are therefore welcome from interested persons who wish to add suitable features to the work, to make it more competitive.
 
-**ML_Pipeline_Preparation.ipynb**: This is another jupyter notebook. It contains the program of the machine learning workflow of this work. It loads the disaster messages, tokenizes them, trains the machine learning model and gives outputs as categories of disaster that match the received messages.
+**Conclusion**<br>
+A machine learning model was therefore developed following the procedure stated above. It is worthy to mention that the grid search parameters of the machine learning pipeline were very few. This was because it was taking a lot of time to train the model. Choosing more parameters means taking more time to process the codes. It took about 32 minutes to train the model in this case and that was somewhat uneconomical. For practice purposes, more parameters could be chosen to see their efffects on the entire system and the results as well.
 
-**process_data.py**: This is a python version of the ETL_Pipeline_Preparation.ipynb. It was produced with the Udacity workspace IDE. It contains only the modularized version of the ETL pipeline preparation program and an independent main function that runs the class. Its dependencies are disaster_messages.csv and disaster_categories.csv. These are the datasets processed by the program and output as a SQLite database file called disast.db. The file disaster_messages.csv is exactly the same as messages.csv (mentioned above); disaster_categories.csv is the same as categories.csv while disast.db is the same as disasterMessage.db.
+**Acknowledgement**<br>
+From the buttom of my heart, I appreciate the Udacity Mentors for their immense help to me during the execution of this project. Without their support, possibly I could not have got this far. I say a big thank you to them. I also thank Figure Eight for providing us with the datasets used to carry out this project. Furthermore, more gratitude goes to the authors of the online materials I consulted to enable me solve some of the challenges I encountered in the course of the project. Some of them are Mosh Hamedani, the authors of pandas and sklearn. Thanks also to google, for providing the search engine, through which the materials I used were accessed. Please accept my gratitude.
 
-**messages.csv/disaster_messages.csv**: This is a dataset file in csv format which contains the various messages that signify disaster situation.
-
-**categories.csv/disaster_categories.csv**: This is another dataset file in csv format. It shows the various categories of disaster the messages can fall into.
-
-**disasterMessage.db/disast.db**: This is a SQLite database file where the cleaned dataset is saved. It is the output of the ETL pipeline preparation program.
-
-
-
+**References**<br>
+1. https://classroom.udacity.com/nanodegrees/nd025/parts/34d62b5a-f380-4223-85dd-7c195994d028/modules/f7c70326-948b-4f97-b368-bec2ac9ad4ba/lessons/706456a2-8784-4961-a40f-f5607769aa43/concepts/21f7a292-ea41-4c96-9121-c38eb4fdaeef
+2. https://ianlondon.github.io/blog/pickling-basics/ 
+3. https://codewithmosh.com/courses/417695/lectures/9219316
+4. https://pandas.pydata.org/docs/getting_started/intro_tutorials/10_text_data.html#min-tut-10-text
+5. https://scikit-learn.org/stable/modules/generated/sklearn.multioutput.MultiOutputClassifier.html
