@@ -107,7 +107,7 @@ class ETLPipline:
         directory where the given path points to.
         '''
         engine = create_engine(self.database_filepath)
-        return dframe.to_sql('dtable', engine, index=False)
+        return dframe.to_sql('dtable', engine, index=False, if_exists='replace')
     
 etl = ETLPipline(disaster_messages, disaster_categories, DisasterResponse) # Instance of the class
 
