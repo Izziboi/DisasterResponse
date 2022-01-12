@@ -89,6 +89,8 @@ class ETLPipline:
         duplicate_df = df[df.duplicated()] # Check for duplicates
         
         df = df.drop_duplicates() # Remove duplicates
+        
+        df = df.replace(2, 1) # Convert every entry to binary
 
         return df
     
