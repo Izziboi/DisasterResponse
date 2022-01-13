@@ -89,6 +89,8 @@ class ETLPipline:
         duplicate_df = df[df.duplicated()] # Check for duplicates
         
         df = df.drop_duplicates() # Remove duplicates
+        
+        df = df.replace(2, 1) # Convert every entry to binary
 
         return df
     
@@ -107,7 +109,7 @@ class ETLPipline:
         directory where the given path points to.
         '''
         engine = create_engine(self.database_filepath)
-        return dframe.to_sql('dtable', engine, index=False)
+        return dframe.to_sql('dtable', engine, index=False, if_exists='replace')
     
 etl = ETLPipline(disaster_messages, disaster_categories, DisasterResponse) # Instance of the class
 

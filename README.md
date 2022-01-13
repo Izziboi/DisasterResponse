@@ -46,6 +46,25 @@ Below are the various folders and files in the repository:
 
 **-go.html**: When a message is entered on the message field on the dashboard homepage and the classification button is clicked, the 36 disaster categories enlist below, taking over the position of the prior bar chart. The categories that are predicted to align with the entered message are shaded with light green colour, while the ones that are not predicted remain unshaded. This effects come from the go.html file. It inherits the attributes of the master.html file and then replaces the bar chart with the list of the dasaster categories.
 
+**Result**<br>
+- On the homepage, are 2 bar charts:<br>
+- The first shows the different genres in the dataset and the number of times each of them featured (see figure below).<br>
+
+![pic1](https://user-images.githubusercontent.com/44449730/149242374-5d2949e6-db3a-4110-9411-d2df04d6898b.jpg)<br>
+- The second shows the different categories and the maximum value of each (see figure below).<br>
+
+![pic2](https://user-images.githubusercontent.com/44449730/149242742-faa2f9ab-2f34-4285-b238-c785df63c2f3.jpg)<br>
+
+- When a text is inserted into the text field on the home page and 'Classify Message' button is clicked, the prediction result appears. On this page, there are also 2 visualizations:<br>
+- The first shows all the categories, shading the predicted ones with light green color. So the unshaded ones are not part of the prediction (see figure below).<br>
+
+![pic3](https://user-images.githubusercontent.com/44449730/149242849-dde8e9ae-cafd-48c9-ae09-5f1392cdd701.jpg)
+
+- The second shows the predicted categories in a bar chart. The height of each bar is the maximum value of the category. The unpredicted categories do not have any bar (see figure below).<br>
+
+![pic4](https://user-images.githubusercontent.com/44449730/149243005-ebbe32b3-771e-43b2-9fa7-1d6a4f8170c6.jpg)
+
+
 **Summary**<br>
 The above arrangement of the files follows the procedure followed in actualizing this project. The work flowed from ETL pipeline preparation, through machine learning pipeline preparation to data visualization. This work successfully manipulates human texts and uses them to make predictions. However, more work can still be done on the project, especially on the visualization area but due to time constraint, it is left at this level for now. Contributions are therefore welcome from interested persons who wish to add suitable features to the work, to make it more competitive.
 
@@ -61,3 +80,6 @@ From the buttom of my heart, I appreciate the Udacity Mentors for their immense 
 3. https://codewithmosh.com/courses/417695/lectures/9219316
 4. https://pandas.pydata.org/docs/getting_started/intro_tutorials/10_text_data.html#min-tut-10-text
 5. https://scikit-learn.org/stable/modules/generated/sklearn.multioutput.MultiOutputClassifier.html
+6. https://datatofish.com/replace-values-pandas-dataframe/
+7. https://github.com/Katba-Caroline/Disaster_Response_Message_Classification_Pipelines/blob/master/app/run.py
+8. https://stackoverflow.com/questions/14494747/how-to-add-images-to-readme-md-on-github

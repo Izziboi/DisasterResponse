@@ -73,6 +73,12 @@ def index():
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
     
+    # Maximum values in each category
+    
+    categ_names = list(df.columns[4:])
+    max_values = list(df.iloc[:,4:].max().values) # Maximum values in each category
+    
+    
     # create visuals
     graphs = [
         {
@@ -92,7 +98,29 @@ def index():
                     'title': "Genre"
                 }
             }
-        }
+        },
+        
+        
+        {
+            'data': [
+                Bar(
+                    x=categ_names,
+                    y=max_values,
+                    orientation = 'v',
+                )
+            ],
+           
+            'layout': {
+                'title': 'Maximum Values of Categories',
+                'yaxis': {
+                    'title': "Value"
+                },
+                'xaxis': {
+                    'title': "Category"
+                    
+                },
+            }
+        },
     ]
     
     # encode plotly graphs in JSON
@@ -112,15 +140,47 @@ def go():
     # use model to predict classification for query
     classification_labels = model.predict([query])[0]
     classification_results = dict(zip(df.columns[4:], classification_labels))
+    
+    
+    cat_names = list(classification_results.keys())
+    cat_values = list(classification_results.values())
+    
+    for val in range(len(cat_names)):
+        if cat_values[val] >= 1:
+            graphs = [
+                {
+                    'data': [
+                        Bar(
+                            x=cat_names,
+                            y=cat_values,
+                            orientation = 'v',
+                        )
+                    ],
 
+                    'layout': {
+                        'title': 'Predicted Categories',
+                        'yaxis': {
+                            'title': "Category Value"
+                        },
+                        'xaxis': {
+                            'title': "Category Name"
+                        }
+                    }
+                },
+            ]
+        else:
+            pass
+         
+    
+    # encode plotly graphs in JSON
+    ids = ["graph-{}".format(i) for i, _ in enumerate(graphs)]
+    graphJSON = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
+    
     # This will render the go.html Please see that file. 
-    return render_template(
-        'go.html',
-        query=query,
-        classification_result=classification_results
-    )
-
-
+    return render_template('go.html', query=query, classification_result=classification_results,
+                          ids=ids, graphJSON=graphJSON)
+    
+    
 def main():
     app.run(host='0.0.0.0', port=3001, debug=True)
 
