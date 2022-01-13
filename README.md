@@ -46,8 +46,7 @@ Below are the various folders and files in the repository:
 
 **-go.html**: When a message is entered on the message field on the dashboard homepage and the classification button is clicked, the 36 disaster categories enlist below, taking over the position of the prior bar chart. The categories that are predicted to align with the entered message are shaded with light green colour, while the ones that are not predicted remain unshaded. This effects come from the go.html file. It inherits the attributes of the master.html file and then replaces the bar chart with the list of the dasaster categories.
 
-**How To Run The Program**
-
+**How To Run The Program**<br>
 - To run the ETL pipeline program, remember that it is located in the data folder. Open a terminal and type: python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db.<br>
 - The machine learning pipeline program is located in the models folder. To run that, open a terminal and type: python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl.<br>
 - Then to run the web app program to display results, access the app folder by typing the following on the terminal: python app/run.py. By this time, the web app would be running and served on port 3001. Open another terminal and type: env | grep WORK. It would return two variables (WORKSPACEDOMAIN=udacity-student-workspaces.com and WORKSPACEID, in my own case, it was view6914b2f4, yours may be different). Now open a new web browser tab and on the address bar, type: https://view6914b2f4-3001.udacity-student-workspaces.com (this is my own web address, please use yours). You would then see the home page of the web app.<br>
