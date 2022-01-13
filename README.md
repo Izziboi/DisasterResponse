@@ -82,3 +82,4 @@ From the buttom of my heart, I appreciate the Udacity Mentors for their immense 
 5. https://scikit-learn.org/stable/modules/generated/sklearn.multioutput.MultiOutputClassifier.html
 6. https://datatofish.com/replace-values-pandas-dataframe/
 7. https://github.com/Katba-Caroline/Disaster_Response_Message_Classification_Pipelines/blob/master/app/run.py
+8. https://stackoverflow.com/questions/14494747/how-to-add-images-to-readme-md-on-github
