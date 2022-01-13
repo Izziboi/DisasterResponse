@@ -5,19 +5,19 @@ This work categorizes different disaster cases and predicts the category of disa
 
 **Python Modules Used**<br>
 The python modules used in this work include:<br>
-. re <br>
-. sys <br>
-. pandas <br>
-. sqlite3 <br>
-. sqlalchemy <br>
-. sklearn <br>
-. nltk <br>
-. pickle <br>
-. numpy <br>
-. sklearn <br>
-. json <br>
-. plotly <br>
-. flask <br>
+- re <br>
+- sys <br>
+- pandas <br>
+- sqlite3 <br>
+- sqlalchemy <br>
+- sklearn <br>
+- nltk <br>
+- pickle <br>
+- numpy <br>
+- sklearn <br>
+- json <br>
+- plotly <br>
+- flask <br>
 
 **Files and Folders In the Repository**<br>
 Below are the various folders and files in the repository:
